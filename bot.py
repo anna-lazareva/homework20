@@ -4,6 +4,7 @@ import sys
 from os import getenv
 
 from aiogram import Bot, Dispatcher, Router, types
+from aiogram.filters import CommandStart
 from aiogram.enums import ParseMode
 from aiogram.types import Message
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
@@ -47,7 +48,7 @@ async def main() -> None:
     bot = TelegramBot(bot_token)
     
     # Обработчик события "новый пользователь"
-    @bot.dp.message()
+    @bot.dp.message(CommandStart())
     async def on_start(message: Message) -> None:
         """
         Обработчик отправляет пригласительное сообщение с клавиатурой.

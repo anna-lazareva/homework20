@@ -36,6 +36,7 @@ class TelegramBot:
         """
         self.dp = Dispatcher()
         self.bot = Bot(token=api_token, parse_mode=ParseMode.HTML)
+        self.bot.get
   
     async def start_polling(self):
         """

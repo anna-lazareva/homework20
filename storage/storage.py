@@ -51,14 +51,14 @@ class Storage:
     
     def create_tables(self):
         """
-        Закрывает соединение с базой данных.
+        Создает таблицы в БД.
         """
         # Customers
         # Запись в таблице Сustomers не может быть удалена, если существует к ней связь из
         # таблицы Orders.
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS Customers (
-                Id INTEGER PRIMARY KEY,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Login TEXT UNIQUE,
                 Password TEXT,
                 Admin BOOLEAN,
@@ -69,7 +69,7 @@ class Storage:
         # Images
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS Images (
-                Id INTEGER PRIMARY KEY,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 ImagePath TEXT UNIQUE
             )
         ''')
@@ -90,7 +90,7 @@ class Storage:
         # таблицы Orders.
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS Products (
-                Id INTEGER PRIMARY KEY,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Name TEXT,
                 Description TEXT,
                 Price TEXT,
@@ -107,7 +107,7 @@ class Storage:
         # Orders
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS Orders (
-                Id INTEGER PRIMARY KEY,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Price TEXT,
                 UserName TEXT,
                 UserAddress TEXT,
